@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>استبيان تثمين النفايات 🌱</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --primary-hover: #1b5e20;
+      --bg: #f4f6f8;
+      --card: #ffffff;
+      --text: #2c3e50;
+      --text-muted: #666666;
+      --hint-bg: #e8f5e9;
+      --hint-border: #2e7d32;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; }
+    body { background-color: var(--bg); color: var(--text); padding: 20px; direction: rtl; }
+    .container { max-width: 750px; margin: 0 auto; }
+    
+    .card { background: var(--card); padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
+    h1 { color: var(--primary); text-align: center; margin-bottom: 10px; font-size: 1.6rem; }
+    .subtitle { text-align: center; color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
+    
+    .notice { background: #e3f2fd; border-right: 4px solid #1976d2; padding: 10px 15px; border-radius: 6px; font-size: 0.85rem; color: #0d47a1; margin-bottom: 20px; }
+
+    .form-group { margin-bottom: 25px; background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #eee; }
+    .question-title { font-weight: 700; font-size: 1.05rem; color: #1a237e; margin-bottom: 6px; display: block; }
+    .question-hint { font-size: 0.85rem; color: var(--text-muted); background: var(--hint-bg); padding: 6px 12px; border-radius: 6px; border-right: 3px solid var(--hint-border); margin-bottom: 12px; display: block; }
+    
+    input[type="text"], input[type="number"], textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; outline: none; margin-top: 5px; }
+    input[type="text"]:focus, input[type="number"]:focus, textarea:focus { border-color: var(--primary); }
+
+    .options-grid { display: flex; flex-direction: column; gap: 8px; }
+    .option-label { display: flex; align-items: center; padding: 10px 12px; border: 1px solid #eee; border-radius: 8px; cursor: pointer; background: #fafafa; transition: 0.2s; }
+    .option-label:hover { background: #f0fdf4; border-color: var(--primary); }
+    .option-label input { margin-left: 10px; width: 18px; height: 18px; accent-color: var(--primary); }
+
+    .btn { background: var(--primary); color: white; border: none; padding: 14px; font-size: 1.1rem; border-radius: 8px; cursor: pointer; width: 100%; font-weight: bold; transition: 0.2s; }
+    .btn:hover { background: var(--primary-hover); }
+
+    #thank-you-card { display: none; text-align: center; padding: 40px 20px; }
+    .cat-icon { font-size: 4rem; margin-bottom: 15px; display: block; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <div class="card" id="survey-card">
+      <h1>استبيان حول تثمين النفايات 🌱🌍</h1>
+      <p class="subtitle">شاركونا إجاباتكم لمساعدتنا في مشروعنا البيئي المدرسي</p>
+      
+      <div class="notice">
+        🔒 <strong>ملاحظة الخصوصية:</strong> المعلومات المدخلة تُستخدم فقط لأغراض هذا المشروع المدرسي ولن تظهر للعلن.
+      </div>
+
+      <form id="surveyForm">
+        <!-- Access Key الخاص بكِ -->
+        <input type="hidden" name="access_key" value="3d5e65dd-6961-49f9-9568-f994f2240f16">
+
+        <!-- 👤 معلومات المشارك -->
+        <div class="form-group">
+          <label class="question-title">👤 الاسم واللقب *</label>
+          <span class="question-hint">💡 اكتب اسمك لتمكيننا من إحصاء عدد المشاركين في دراستنا.</span>
+          <input type="text" id="fullName" name="الاسم واللقب" required placeholder="أدخل اسمك الكامل">
+        </div>
+
+        <div class="form-group">
+          <label class="question-title">🎂 العمر *</label>
+          <span class="question-hint">💡 يساعدنا تحديد العمر في معرفة الفئات الأكثر تفاعلاً مع القضية البيئية.</span>
+          <input type="number" id="age" name="العمر" min="5" max="100" required placeholder="أدخل عمرك">
+        </div>
+
+        <!-- س1 -->
+        <div class="form-group">
+          <label class="question-title">1️⃣ عندما تنتهي من استعمال قنينة بلاستيكية، ماذا تفعل بها عادةً؟ *</label>
+          <span class="question-hint">💡 حدد التصرف الأكثر تكراراً لديك عند التخلص من البلاستيك.</span>
+          <div class="options-grid">
+            <label class="option-label"><input type="radio" name="س1: التصرف بالقنينة البلاستيكية" value="أرميها في سلة النفايات 🗑️" required> أرميها في سلة النفايات 🗑️</label>
+            <label class="option-label"><input type="radio" name="س1: التصرف بالقنينة البلاستيكية" value="أضعها في حاوية مخصصة للتدوير ♻️"> أضعها في حاوية مخصصة للتدوير ♻️</label>
+            <label class="option-label"><input type="radio" name="س1: التصرف بالقنينة البلاستيكية" value="أعيد استعمالها 🔄"> أعيد استعمالها 🔄</label>
+            <label class="option-label"><input type="radio" name="س1: التصرف بالقنينة البلاستيكية" value="لا أفكر في الأمر 🤷"> لا أفكر في الأمر 🤷</label>
+          </div>
+        </div>
+
+        <!-- س2 -->
+        <div class="form-group">
+          <label class="question-title">2️⃣ هل تقوم بفرز النفايات في المنزل؟ *</label>
+          <span class="question-hint">💡 المقصود هو فصل المواد البلاستيكية والورق عن بقايا الطعام والنفايات العضوية.</span>
+          <div class="options-grid">
+            <label class="option-label"><input type="radio" name="س2: الفرز المنزلي" value="دائمًا" required> دائمًا 🟢</label>
+            <label class="option-label"><input type="radio" name="س2: الفرز المنزلي" value="أحيانًا"> أحيانًا 🟡</label>
+            <label class="option-label"><input type="radio" name="س2: الفرز المنزلي" value="نادرًا"> نادرًا 🟠</label>
+            <label class="option-label"><input type="radio" name="س2: الفرز المنزلي" value="أبدًا"> أبدًا 🔴</label>
+          </div>
+        </div>
+
+        <!-- س3 (خيارات متعددة) -->
+        <div class="form-group">
+          <label class="question-title">3️⃣ أيّ نوع من النفايات هو الأكثر انتشارًا في حياتنا اليومية في رأيك؟ (يمكن اختيار أكثر من خيار)</label>
+          <span class="question-hint">💡 اختر المواد التي تلاحظ انتشارها بشكل واسع في محيطك اليومي.</span>
+          <div class="options-grid">
+            <label class="option-label"><input type="checkbox" name="س3: أكثر النفايات انتشاراً" value="البلاستيك 🧴"> البلاستيك 🧴</label>
+            <label class="option-label"><input type="checkbox" name="س3: أكثر النفايات انتشاراً" value="الورق 📄"> الورق 📄</label>
+            <label class="option-label"><input type="checkbox" name="س3: أكثر النفايات انتشاراً" value="النفايات العضوية 🍎"> النفايات العضوية 🍎</label>
+            <label class="option-label"><input type="checkbox" name="س3: أكثر النفايات انتشاراً" value="المعادن 🥫"> المعادن 🥫</label>
+          </div>
+          <input type="text" name="س3: نوع آخر" placeholder="إذا اخترت أخرى، اكتب النوع هنا..." style="margin-top: 10px;">
+        </div>
+
+        <!-- س4 -->
+        <div class="form-group">
+          <label class="question-title">4️⃣ ماذا تعني لك عبارة «تثمين النفايات»؟ *</label>
+          <span class="question-hint">💡 اختر المعنى الأقرب للثقافة البيئية العامة بالنسبة لك.</span>
+          <div class="options-grid">
+            <label class="option-label"><input type="radio" name="س4: مفهوم تثمين النفايات" value="التخلص منها بطريقة أفضل" required> التخلص منها بطريقة أفضل</label>
+            <label class="option-label"><input type="radio" name="س4: مفهوم تثمين النفايات" value="إعادة استعمالها أو تدويرها والاستفادة منها ♻️"> إعادة استعمالها أو تدويرها والاستفادة منها ♻️</label>
+            <label class="option-label"><input type="radio" name="س4: مفهوم تثمين النفايات" value="حرقها"> حرقها</label>
+            <label class="option-label"><input type="radio" name="س4: مفهوم تثمين النفايات" value="لا أعرف"> لا أعرف</label>
+          </div>
+        </div>
+
+        <!-- س5 (خيارات متعددة) -->
+        <div class="form-group">
+          <label class="question-title">5️⃣ ما السبب الذي يمنع الناس، في رأيك، من تثمين النفايات؟ (يمكن اختيار أكثر من خيار)</label>
+          <span class="question-hint">💡 يمكنك تحديد عدة عوامل ترى أنها تعيق المبادرات البيئية لدى المجتمع.</span>
+          <div class="options-grid">
+            <label class="option-label"><input type="checkbox" name="س5: أسباب العوائق" value="نقص الوعي 📢"> نقص الوعي 📢</label>
+            <label class="option-label"><input type="checkbox" name="س5: أسباب العوائق" value="نقص حاويات الفرز 🗑️"> نقص حاويات الفرز 🗑️</label>
+            <label class="option-label"><input type="checkbox" name="س5: أسباب العوائق" value="الكسل أو عدم الاهتمام"> الكسل أو عدم الاهتمام</label>
+            <label class="option-label"><input type="checkbox" name="س5: أسباب العوائق" value="عدم معرفة كيفية القيام بذلك"> عدم معرفة كيفية القيام بذلك</label>
+          </div>
+          <input type="text" name="س5: أسباب أخرى" placeholder="أسباب أخرى، اكتبها هنا..." style="margin-top: 10px;">
+        </div>
+
+        <!-- س6 -->
+        <div class="form-group">
+          <label class="question-title">6️⃣ لو وُضعت حاويات لفرز النفايات في مدرستك، هل ستستعملها؟ *</label>
+          <span class="question-hint">💡 خيارك يعبر عن مدى استعدادك للتفاعل المباشر مع الحلول الميدانية.</span>
+          <div class="options-grid">
+            <label class="option-label"><input type="radio" name="س6: الاستعمال في المدرسة" value="نعم بالتأكيد ✅" required> نعم بالتأكيد ✅</label>
+            <label class="option-label"><input type="radio" name="س6: الاستعمال في المدرسة" value="ربما"> ربما</label>
+            <label class="option-label"><input type="radio" name="س6: الاستعمال في المدرسة" value="لا"> لا</label>
+          </div>
+        </div>
+
+        <!-- س7 -->
+        <div class="form-group">
+          <label class="question-title">7️⃣ أيّ حل تراه الأكثر فعالية؟ *</label>
+          <span class="question-hint">💡 حدد الخطوة الأساسية التي تجدها أكثر فاعلية وأولوية.</span>
+          <div class="options-grid">
+            <label class="option-label"><input type="radio" name="س7: الحل الأفضل" value="حملات التوعية 📢" required> حملات التوعية 📢</label>
+            <label class="option-label"><input type="radio" name="س7: الحل الأفضل" value="توفير حاويات الفرز 🗑️️"> توفير حاويات الفرز 🗑️</label>
+            <label class="option-label"><input type="radio" name="س7: الحل الأفضل" value="تشجيع إعادة التدوير ♻️"> تشجيع إعادة التدوير ♻️</label>
+            <label class="option-label"><input type="radio" name="س7: الحل الأفضل" value="التقليل من استعمال البلاستيك 🧴"> التقليل من استعمال البلاستيك 🧴</label>
+            <label class="option-label"><input type="radio" name="س7: الحل الأفضل" value="جميعها"> جميعها</label>
+          </div>
+        </div>
+
+        <!-- س8 -->
+        <div class="form-group">
+          <label class="question-title">8️⃣ 💭 لو كان بإمكانك تغيير شيء واحد في طريقة تعاملنا مع النفايات، ماذا ستغيّر؟ *</label>
+          <span class="question-hint">💡 اكتب مقترحك أو فكرتك الحرة التي ترى أنها قد تحسن الوضع البيئي.</span>
+          <textarea id="q8" name="س8: مقترح وتغيير حر" rows="4" required placeholder="اكتب إجابتك هنا..."></textarea>
+        </div>
+
+        <button type="submit" id="submitBtn" class="btn">إرسال الإجابات 🚀</button>
+      </form>
+    </div>
+
+    <!-- 🐈 صفحة الشكر -->
+    <div class="card" id="thank-you-card">
+      <span class="cat-icon">🐈</span>
+      <h1 style="color: #2e7d32;">شكرًا لمشاركتك! 💚</h1>
+      <p style="margin-top: 15px; font-size: 1.1rem;">لقد ساهمتَ في إنجاح هذا الاستبيان وفي نشر الوعي بأهمية تثمين النفايات. 🌱♻️</p>
+      <p style="margin-top: 10px; color: #555;">كل إجابة تصنع فرقًا صغيرًا نحو بيئة أفضل. 🌍</p>
+    </div>
+
+  </div>
+
+  <script>
+    document.getElementById('surveyForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.innerText = 'جاري الإرسال... ⏳';
+
+      const formData = new FormData(this);
+      const object = Object.fromEntries(formData);
+      
+      // معالجة الخيارات المتعددة للنماذج
+      formData.forEach((value, key) => {
+        if(key.includes('س3') || key.includes('س5')) {
+          if(!object[key]) {
+            object[key] = value;
+          } else if(typeof object[key] === 'string') {
+            object[key] = [object[key], value].join(', ');
+          }
+        }
+      });
+
+      const json = JSON.stringify(object);
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: json
+      })
+      .then(async (response) => {
+        document.getElementById('survey-card').style.display = 'none';
+        document.getElementById('thank-you-card').style.display = 'block';
+        window.scrollTo(0, 0);
+      })
+      .catch(error => {
+        document.getElementById('survey-card').style.display = 'none';
+        document.getElementById('thank-you-card').style.display = 'block';
+        window.scrollTo(0, 0);
+      });
+    });
+  </script>
+</body>
+</html>
